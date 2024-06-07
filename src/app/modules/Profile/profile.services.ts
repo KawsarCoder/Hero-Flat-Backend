@@ -71,6 +71,7 @@ const updateUserProfileIntoDB = async (userData: TAuthUser, body: any) => {
     let updatedProfile;
 
     if (isExistUser.role === "ADMIN") {
+      // First, update the admin table
       updatedProfile = await tx.admin.update({
         where: { email: isExistUser.email },
         data: {
@@ -81,6 +82,7 @@ const updateUserProfileIntoDB = async (userData: TAuthUser, body: any) => {
         },
       });
 
+      // Then, update the users table and user profile
       await tx.users.update({
         where: { id: isExistUser.id },
         data: { email: body.email || isExistUser.email },
@@ -97,6 +99,7 @@ const updateUserProfileIntoDB = async (userData: TAuthUser, body: any) => {
         });
       }
     } else if (isExistUser.role === "USER") {
+      // First, update the normalUser table
       updatedProfile = await tx.normalUser.update({
         where: { email: isExistUser.email },
         data: {
@@ -107,6 +110,7 @@ const updateUserProfileIntoDB = async (userData: TAuthUser, body: any) => {
         },
       });
 
+      // Then, update the users table and user profile
       await tx.users.update({
         where: { id: isExistUser.id },
         data: { email: body.email || isExistUser.email },
@@ -123,6 +127,7 @@ const updateUserProfileIntoDB = async (userData: TAuthUser, body: any) => {
         });
       }
     } else if (isExistUser.role === "SUPER_ADMIN") {
+      // Handle Super Admin updates if applicable
     } else {
       throw new AppError(httpStatus.BAD_REQUEST, "Invalid user role");
     }

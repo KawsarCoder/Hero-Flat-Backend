@@ -4,5 +4,5 @@ export const userFilterAbleField: string[] = [
   "searchTerm",
   "role",
   "status",
-];
+]; // for all filterable fields
 export const userSearchAbleFields: string[] = ["name"];

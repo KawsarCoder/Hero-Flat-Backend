@@ -17,7 +17,7 @@ userRoutes.post(
   userControllers.createAdmin
 );
 userRoutes.get(
-  "/",
+  "/get-all-user",
   auth(UserRole.ADMIN, UserRole.SUPER_ADMIN),
   userControllers.getAllUsers
 );
@@ -27,7 +27,7 @@ userRoutes.get(
   userControllers.getUserById
 );
 userRoutes.get(
-  "/normal-user",
+  "/",
   auth(UserRole.ADMIN, UserRole.SUPER_ADMIN),
   userControllers.getAllNormalUsers
 );

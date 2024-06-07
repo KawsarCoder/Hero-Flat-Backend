@@ -96,6 +96,7 @@ const getAllUserFromDB = async (params: any, options: TpaginationItems) => {
     helperFunction.calculatePaginationFiltering(options);
 
   const andCondition: Prisma.UsersWhereInput[] = [];
+  //This condition for only search any items
   if (params.searchTerm) {
     andCondition.push({
       OR: userSearchAbleFields.map((field) => ({
@@ -107,6 +108,7 @@ const getAllUserFromDB = async (params: any, options: TpaginationItems) => {
     });
   }
 
+  //This condition for specific field, for example name, email, contactnumber, etc
   if (Object.keys(filterData).length > 0) {
     andCondition.push({
       AND: Object.keys(filterData).map((key) => ({
