@@ -4,9 +4,16 @@ import express, { Application, Request, Response } from "express";
 import globalErrorHandelar from "./app/middlewares/globalError";
 import notFoundRoute from "./app/middlewares/notFound";
 import router from "./routes/routes";
+
 const app: Application = express();
+
 //cors for browser support
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({
+    origin: ["https://hero-flat-frontend.vercel.app", "http://localhost:3000"],
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 //parser
 app.use(express.json());
@@ -14,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //root routes
 app.get("/", (req: Request, res: Response) => {
-  res.send({ message: "Flat Sharing Server is running now" });
+  res.send({ message: "Hero Flat Server Running " });
 });
 
 //main api endpoint

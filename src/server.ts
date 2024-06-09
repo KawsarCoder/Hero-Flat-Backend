@@ -5,7 +5,7 @@ const PORT = 5000;
 
 async function main() {
   const server: Server = app.listen(PORT, () => {
-    console.log("Flat Share server is listening on port", PORT);
+    console.log("Hero Flat server is listening on port", PORT);
   });
   const exitHandler = () => {
     if (server) {
