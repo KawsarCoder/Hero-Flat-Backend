@@ -1,6 +1,6 @@
-# Flat Share Application(Prisma, TypeScript, ExpressJS, CRUD Operations, Authentication System)
+# Hero Flat Application - Backend
 
-This project is a Flat Share Application, To has a API built using with prisma(ORM), Express, and TypeScript, Validation with implement authentication system, Filtering , and CRUD Operations etc.
+This is the backend part of the Hero Flat Application, a fully-fledged, full-stack dynamic web app built with Prisma, Express, TypeScript, PostgreSQL, and other modern technologies. The backend provides features like authentication, validation, filtering, and CRUD operations, which are consumed by the frontend.
 
 ## Prerequisites
 
@@ -10,58 +10,135 @@ Before you begin, ensure you have the following installed:
 - npm or yarn
 - Prisma
 - TypeScript
+- PostgreSQL
 - Cors
-- Validation Packages
-- Zod
+- Validation Packages (Zod)
 - ExpressJS
 - JWT
-- JSON Parser
-- CookieParser
-- pacakages
 
-### File Path
+## Project Structure
 
-## Backend Structure
-
-Flat Share Application/
+```
+Hero Flat Application Backend/
 ├── src/
-│ ├── app/
-│ ├── config/
-│ ├── modules/
-│ ├── app.ts
-│ └── server.ts
+│   ├── app/
+│   ├── config/
+│   ├── modules/
+│   ├── app.ts
+│   └── server.ts
 ├── .env
 ├── .gitignore
 ├── package.json
 ├── tsconfig.json
 └── README.md
+```
 
 ## Getting Started
 
-### Run Project
+### Installation
 
-`Step:1` For development purpose
+Clone the repository and install the dependencies:
 
-```typescript
- npm run start:dev
- or
- yarn start:dev
+```bash
+git clone https://github.com/KawsarCoder/Hero-Flat-Backend
+cd hero-flat-backend
+npm install
+# or
+yarn install
 ```
 
-`Step:2` For Production
+### Database Setup
 
-```typescript
-yarn build
-or
+1. Ensure PostgreSQL is installed and running.
+2. Create a new database for the application.
+3. Configure the database connection in the `.env` file.
+
+Example `.env` file:
+
+```
+DATABASE_URL="postgresql://username:password@localhost:5432/hero_flat_db"
+JWT_SECRET="your_jwt_secret"
+PORT=4000
+```
+
+### Running the Project
+
+**Development:**
+
+```bash
+npm run start:dev
+# or
+yarn start:dev
+```
+
+The development server will start on `http://localhost:4000`.
+
+**Production:**
+
+```bash
 npm run build
+# or
+yarn build
 ```
 
-#### API Link :
+After building, you can start the production server with:
 
-### Backend URL :
+```bash
+npm start
+# or
+yarn start
+```
 
-https://flat-sharing-application.vercel.app/
+### Available Scripts
 
-#### Video URL Link:
+- `start:dev`: Runs the application in development mode.
+- `build`: Builds the application for production.
+- `start`: Starts the application in production mode.
+- `lint`: Runs ESLint for code quality checks.
 
-https://drive.google.com/file/d/1N89tEhSdsMsXhbem9kZhHrXevB0JIpkZ/view?usp=sharing
+### Prisma Migrations
+
+To apply database migrations:
+
+```bash
+npx prisma migrate dev
+```
+
+To generate Prisma client:
+
+```bash
+npx prisma generate
+```
+
+## Features
+
+- **Authentication**: Secure user authentication with JWT.
+- **Role Management**: Different functionalities for Admin, Super Admin, and User roles.
+- **CRUD Operations**: Create, read, update, and delete flats.
+- **Filtering**: Filter flats based on various criteria.
+- **Validation**: Input validation using Zod.
+- **ORM**: Database management with Prisma.
+
+## Role Features
+
+### Admin
+
+- Manage users (edit, delete, role change, status change).
+- Manage all flat requests.
+- Add, edit, delete flats.
+
+### User
+
+- View all flats and details.
+- Request available flats.
+- Update profile.
+- Check flat and request status from the dashboard.
+
+## URLs
+
+- **Frontend**: [Hero Flat Frontend](https://hero-flat-frontend.vercel.app/)
+- **Backend**: [Hero Flat Backend](https://hero-flat-backend.vercel.app/)
+
+## Video Overview
+
+For a comprehensive overview of the application features, please watch the [full overview video](https://drive.google.com/file/d/1uOCoHrM12E6NOYDOs-EX1GGgLE-2iY9n/view?usp=sharing).
